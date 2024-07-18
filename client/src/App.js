@@ -1,8 +1,7 @@
-import { Navbar } from "./Components/Navbar";
+import { Navbar } from "./Pages/Navbar";
 import { MainRoutes } from "./Pages/MainRoutes";
 
 function App() {
-  //Do not modify anything in this file
   return (
     <div className="App">
       <Navbar />

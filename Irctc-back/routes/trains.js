@@ -74,6 +74,43 @@ router.post("/:train_id/book", auth, async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server error");
   }
+});router.post("/:train_id/book", auth, async (req, res) => {
+  const { train_id } = req.params;
+  const { user_id, no_of_seats } = req.body;
+
+  try {
+    const train = await Train.findById(train_id);
+
+    if (train.available_seats < no_of_seats) {
+      return res.status(400).json({ message: "Not enough seats available" });
+    }
+
+    const seat_numbers = Array.from(
+      { length: no_of_seats },
+      (_, i) => train.seat_capacity - train.available_seats + i + 1
+    );
+    const booking = new Booking({
+      user_id,
+      train_id,
+      no_of_seats,
+      seat_numbers,
+    });
+    await booking.save();
+
+    train.available_seats -= no_of_seats;
+    await train.save();
+
+    res
+      .status(200)
+      .json({
+        message: "Seat booked successfully",
+        booking_id: booking._id,
+        seat_numbers,
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
 });
 
 module.exports = router;

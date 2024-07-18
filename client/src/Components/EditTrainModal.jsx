@@ -1,8 +1,38 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
-  const [editedTrain, setEditedTrain] = useState(train);
+  const { id } = useParams();
+  const [editedTrain, setEditedTrain] = useState({});
+  const [allTrains, setAllTrains] = useState([]);
+
+  useEffect(() => {
+    const fetchAllTrains = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/getall", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setAllTrains(data);
+          // Find the specific train by ID and set editedTrain
+          const edited = data.find((train) => train._id === id);
+          if (edited) {
+            setEditedTrain(edited);
+          }
+        }
+      } catch (error) {
+        console.error("Error during fetching trains:", error);
+        alert("An error occurred while fetching trains. Please try again.");
+      }
+    };
+
+    fetchAllTrains();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,71 +67,87 @@ const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
   };
 
   return (
-    <div className={`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 ${isOpen ? "" : "hidden"}`}>
+    <div
+      className={`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 ${
+        isOpen ? "" : "hidden"
+      }`}
+    >
       <div className="bg-white rounded-lg p-6 w-11/12 max-w-lg">
         <h3 className="text-lg font-bold mb-4">Edit Train</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Source</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Source
+            </label>
             <input
               type="text"
               name="source"
-              value={editedTrain.source}
+              value={editedTrain.source || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Destination</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Destination
+            </label>
             <input
               type="text"
               name="destination"
-              value={editedTrain.destination}
+              value={editedTrain.destination || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Seat Capacity</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Seat Capacity
+            </label>
             <input
               type="number"
               name="seat_capacity"
-              value={editedTrain.seat_capacity}
+              value={editedTrain.seat_capacity || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Available Seats</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Available Seats
+            </label>
             <input
               type="number"
               name="available_seats"
-              value={editedTrain.available_seats}
+              value={editedTrain.available_seats || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Arrival Time at Source</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Arrival Time at Source
+            </label>
             <input
               type="text"
               name="arrival_time_at_source"
-              value={editedTrain.arrival_time_at_source}
+              value={editedTrain.arrival_time_at_source || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Arrival Time at Destination</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Arrival Time at Destination
+            </label>
             <input
               type="text"
               name="arrival_time_at_destination"
-              value={editedTrain.arrival_time_at_destination}
+              value={editedTrain.arrival_time_at_destination || ""}
               onChange={handleChange}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2"

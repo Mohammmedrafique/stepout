@@ -4,16 +4,18 @@ require("dotenv").config();
 
 const app = express();
 const cors = require("cors");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const Port = 8080 || process.env.Port;
 
 app.get("/", (req, res) => {
-  res
-    .status(200)
-    .send({
-      message:
-        "Welcome to Backend of IRCTC here you can login and register by route(/register ,/login)",
-    });
+  res.status(200).send({
+    message:
+      "Welcome to Backend of IRCTC here you can login and register by route(/register ,/login)",
+  });
 });
 app.use(express.json());
 app.use(cors());

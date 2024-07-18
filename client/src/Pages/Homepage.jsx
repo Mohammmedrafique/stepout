@@ -1,7 +1,6 @@
 import React from "react";
-import UserDashboard from "../mainpage/UserDashboard";
+import UserDashboard from "../Components/UserDashboard";
 import Footer from "./Footer";
-import AdminDashboard from "../mainpage/AdminDashboard";
 
 export const Homepage = () => {
   return (
