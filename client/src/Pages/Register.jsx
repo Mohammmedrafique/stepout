@@ -26,7 +26,7 @@ export const Register = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://stepout-qqiv.onrender.com//api/signup",
+        "https://stepout-qqiv.onrender.com/api/signup",
         {
           method: "POST",
           headers: {
