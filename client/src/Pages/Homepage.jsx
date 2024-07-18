@@ -1,7 +1,7 @@
 import React from "react";
-import Login from "./Login";
-import Footer from "./Footer";
 
+import { Footer } from "./Footer";
+import { Login } from "./Login";
 export const Homepage = () => {
   return (
     <div className="w-screenmax-w-screen w-full">

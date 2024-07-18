@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Train, Ticket, Users, AlertCircle } from "lucide-react";
+import { Train, Ticket, Users } from "lucide-react";
 import { toast } from "react-toastify";
 
 const BookSeat = () => {

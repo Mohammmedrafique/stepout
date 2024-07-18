@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
- const Login = () => {
+export const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ import { toast } from "react-toastify";
           localStorage.setItem("userid", data.user_id);
 
           toast.success("Registration successfully");
-          navigate("/"); // Redirect to homepage
+          navigate("/user"); // Redirect to homepage
         } else {
           toast.error("Token not found in response.");
         }
@@ -124,4 +124,3 @@ import { toast } from "react-toastify";
     </div>
   );
 };
-export default Login;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+export const Footer = () => {
   
   const handleEmailClick = () => {
     window.location.href = "mailto:kota.mohdrafiq@gmail.com";
@@ -45,4 +45,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+
