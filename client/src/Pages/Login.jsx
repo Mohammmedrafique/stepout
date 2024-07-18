@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
-export const Login = () => {
+ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -124,3 +124,4 @@ export const Login = () => {
     </div>
   );
 };
+export default Login;
