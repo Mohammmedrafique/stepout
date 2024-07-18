@@ -9,7 +9,7 @@ const UserBookings = () => {
     const fetchAllBookings = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/book/${userId}`,
+          `https://stepout-psi.vercel.app/api/book/${userId}`,
           {
             method: "GET",
             headers: {

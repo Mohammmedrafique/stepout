@@ -32,23 +32,26 @@ const AddTrain = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/trains/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "x-api-key": "Hello",
-        },
-        body: JSON.stringify({
-          train_name: trainName,
-          source,
-          destination,
-          seat_capacity: totalSeats,
-          available_seats: availableSeats,
-          arrival_time_at_source: arrivalTimeAtSource,
-          arrival_time_at_destination: arrivalTimeAtDestination,
-        }),
-      });
+      const response = await fetch(
+        "https://stepout-psi.vercel.app/api/trains/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "x-api-key": "Hello",
+          },
+          body: JSON.stringify({
+            train_name: trainName,
+            source,
+            destination,
+            seat_capacity: totalSeats,
+            available_seats: availableSeats,
+            arrival_time_at_source: arrivalTimeAtSource,
+            arrival_time_at_destination: arrivalTimeAtDestination,
+          }),
+        }
+      );
 
       if (response.ok) {
         alert("Train added successfully.");

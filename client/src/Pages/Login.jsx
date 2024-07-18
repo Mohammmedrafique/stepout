@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 export const Login = () => {
   const navigate = useNavigate();
- 
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,7 +23,7 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("https://stepout-psi.vercel.app/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const Login = () => {
           // Changed to access_token
           localStorage.setItem("token", data.access_token); // Store the access token
           localStorage.setItem("userid", data.user_id);
-         
+
           toast.success("Registration successfully");
           navigate("/"); // Redirect to homepage
         } else {

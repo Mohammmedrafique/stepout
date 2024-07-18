@@ -9,13 +9,16 @@ const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
   useEffect(() => {
     const fetchAllTrains = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/getall", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const response = await fetch(
+          "https://stepout-psi.vercel.app/api/getall",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setAllTrains(data);
@@ -43,7 +46,7 @@ const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8080/api/trains/${editedTrain._id}`,
+        `https://stepout-psi.vercel.app/api/trains/${editedTrain._id}`,
         {
           method: "PUT",
           headers: {

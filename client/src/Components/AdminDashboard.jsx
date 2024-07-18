@@ -5,7 +5,7 @@ const AdminDashboard = () => {
   const [trains, setTrains] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/trains")
+    fetch("https://stepout-psi.vercel.app/api/trains")
       .then((response) => response.json())
       .then((data) => setTrains(data))
       .catch((error) => console.error("Error fetching train data:", error));
@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   const handleDelete = async (trainId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/trains/${trainId}`,
+        `https://stepout-psi.vercel.app/api/trains/${trainId}`,
         {
           method: "DELETE",
           headers: {

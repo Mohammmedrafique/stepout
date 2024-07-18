@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api";
+const API_URL = "https://stepout-psi.vercel.app/api";
 
 export const register = async (userData) => {
   const response = await fetch(`${API_URL}/register/signup`, {
