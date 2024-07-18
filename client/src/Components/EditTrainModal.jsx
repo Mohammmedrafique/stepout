@@ -10,7 +10,7 @@ const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
     const fetchAllTrains = async () => {
       try {
         const response = await fetch(
-          "https://stepout-psi.vercel.app/api/getall",
+          "https://stepout-qqiv.onrender.com/api/getall",
           {
             method: "GET",
             headers: {
@@ -46,7 +46,7 @@ const EditTrainModal = ({ train, isOpen, onClose, onUpdateTrain }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://stepout-psi.vercel.app/api/trains/${editedTrain._id}`,
+        `https://stepout-qqiv.onrender.com/api/trains/${editedTrain._id}`,
         {
           method: "PUT",
           headers: {

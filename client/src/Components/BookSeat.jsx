@@ -18,7 +18,7 @@ const BookSeat = () => {
       setIsLoading(true);
       try {
         const response = await fetch(
-          `https://stepout-psi.vercel.app/api/trains/${trainId}`
+          `https://stepout-qqiv.onrender.com/api/trains/${trainId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -48,7 +48,7 @@ const BookSeat = () => {
     const userId = localStorage.getItem("userid");
     try {
       const response = await fetch(
-        `https://stepout-psi.vercel.app/api/${trainId}/book`,
+        `https://stepout-qqiv.onrender.com/api/${trainId}/book`,
         {
           method: "POST",
           headers: {

@@ -33,7 +33,7 @@ const AddTrain = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://stepout-psi.vercel.app/api/trains/create",
+        "https://stepout-qqiv.onrender.com/api/trains/create",
         {
           method: "POST",
           headers: {

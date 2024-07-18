@@ -26,7 +26,7 @@ export const Register = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:8080https://stepout-psi.vercel.app//api/signup",
+        "http://localhost:8080https://stepout-qqiv.onrender.com//api/signup",
         {
           method: "POST",
           headers: {

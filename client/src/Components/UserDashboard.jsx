@@ -14,7 +14,7 @@ const UserDashboard = () => {
     const fetchAllTrains = async () => {
       try {
         const response = await fetch(
-          "https://stepout-psi.vercel.app/api/getall",
+          "https://stepout-qqiv.onrender.com/api/getall",
           {
             method: "GET",
             headers: {
