@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Booking = require("../models/Booking");
-
-// Get Specific Booking Details by Booking ID
-router.get("/booking/:booking_id", async (req, res) => {
+const auth = require("../middlewares/auth");
+router.get("/booking/:booking_id",auth,async (req, res) => {
   const { booking_id } = req.params;
 
   try {
@@ -60,7 +59,7 @@ router.get("/user/:user_id/booking/:booking_id", async (req, res) => {
 });
 
 // Get All Bookings for a Specific User
-router.get("/book/:user_id", async (req, res) => {
+router.get("/book/:user_id",auth, async (req, res) => {
   const { user_id } = req.params;
 
   try {
