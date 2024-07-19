@@ -25,3 +25,4 @@ yarn-error.log*
 results.json
 cypress/videos
 after_spec_results.json
+.env

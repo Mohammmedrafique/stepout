@@ -36,14 +36,19 @@ export const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-
+      
         if (data.access_token) {
           // Changed to access_token
+          console.log(data);
           localStorage.setItem("token", data.access_token); // Store the access token
           localStorage.setItem("userid", data.user_id);
-
+      
           toast.success("Registration successfully");
-          navigate("/user"); // Redirect to homepage
+          if (data.role === "admin") {
+            navigate("/admin");
+          } else {
+            navigate("/user");
+          }
         } else {
           toast.error("Token not found in response.");
         }

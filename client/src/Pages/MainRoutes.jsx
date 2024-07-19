@@ -20,7 +20,7 @@ const MainRoutes = () => {
       <Route path="/book-seat/:id" element={<BookSeat />} />
       <Route path="/mybooking" element={<UserBookings />} />
       <Route path="/add-train" element={<AddTrain />} />
-      <Route path="/edit-train/:id" element={<EditTrainModal />} />
+      {/* <Route path="/edit-train/:id" element={<EditTrainModal />} /> */}
       <Route path="/" element={<Homepage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
